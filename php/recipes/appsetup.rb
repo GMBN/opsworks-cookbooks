@@ -1,5 +1,9 @@
-execute "composer install" do
-  command "php composer.phar install && touch /var/log/.php_composer_installed"
-  creates "/var/log/.php_composer_installed"
-  action :run
-end
+script "install_composer" do
+    interpreter "bash"
+    user "root"
+    cwd "#{deploy[:deploy_to]}/"
+    code <<-EOH
+    curl -sS https://getcomposer.org/installer | php
+    php composer.phar install --no-dev
+    EOH
+  end
