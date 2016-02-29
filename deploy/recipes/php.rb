@@ -18,12 +18,9 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     path deploy[:deploy_to]
   end
-  
+
   opsworks_deploy do
     deploy_data deploy
     app application
-    notifies :run, 'execute[permissao]', :immediately
   end
-
 end
-
