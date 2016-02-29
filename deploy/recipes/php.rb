@@ -22,6 +22,7 @@ node[:deploy].each do |application, deploy|
   opsworks_deploy do
     deploy_data deploy
     app application
+    notifies :run, 'execute[permissao]', :immediately
   end
 
 end
