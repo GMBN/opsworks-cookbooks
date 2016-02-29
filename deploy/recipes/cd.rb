@@ -1,3 +1,5 @@
+include_recipe 'deploy'
+
 node[:deploy].each do |app_name, deploy|
   directory "#{deploy[:deploy_to]}/data" do
     mode 0775
