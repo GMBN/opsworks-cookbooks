@@ -13,4 +13,13 @@ node[:deploy].each do |app_name, deploy|
     recursive true
     action :create
   end
+  
+ cookbook_file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
+    mode 0775
+    user deploy[:user]
+    group deploy[:group]
+    action :create
+  end
+  
+  
 end
