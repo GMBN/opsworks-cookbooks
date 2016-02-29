@@ -14,7 +14,7 @@ node[:deploy].each do |app_name, deploy|
     action :create
   end
   
- cookbook_file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
+ file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
     mode 0775
     user deploy[:user]
     group deploy[:group]
