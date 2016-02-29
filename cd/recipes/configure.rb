@@ -12,12 +12,12 @@ node[:deploy].each do |app_name, deploy|
     user deploy[:user]
     group deploy[:group]
   end
-  directory "#{deploy[:deploy_to]}/current/public/correspondentes" do
-    recursive true
-    mode 0775
-    user deploy[:user]
-    group deploy[:group]
-  end
+
+execute 'permissao' do
+  command "chmod -R 775 #{deploy[:deploy_to]}/current/public/correspondentes"
+  action :run
+end
+
   
  file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
     mode 0775
