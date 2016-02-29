@@ -11,14 +11,12 @@ node[:deploy].each do |app_name, deploy|
     user deploy[:user]
     group deploy[:group]
     recursive true
-    action :create
   end
   directory "#{deploy[:deploy_to]}/current/public/correspondentes" do
     mode 0775
     user deploy[:user]
     group deploy[:group]
     recursive true
-    action :create
   end
   
  file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
