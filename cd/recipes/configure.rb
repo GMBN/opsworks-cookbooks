@@ -7,10 +7,6 @@ node[:deploy].each do |app_name, deploy|
     action :create
   end
 
-execute 'permissao' do
-  command "chmod -R 775 #{deploy[:deploy_to]}/{current/public/correspondentes,current/data}"
-  action :nothing
-end
   
  file "#{deploy[:deploy_to]}/current/public/complemento/cidades.json" do
     mode 0775
